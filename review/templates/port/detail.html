@@ -1,0 +1,44 @@
+  
+{% extends "port/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <div class="row" style="margin-left: 4%;">
+
+      <!-- Post Content Column -->
+   
+
+        <!-- Title -->
+        <h1 class="mt-4">{{ review.title }}</h1>
+
+        <!-- Author -->
+        <p class="lead">
+          by
+          <a href="{% url 'home' %}">Indra Dhanush</a>
+        </p>
+
+        <hr>
+
+        <!-- Date/Time -->
+        <p>   <strong>{{ review.description }} </strong></p>
+        <p>Release Date: {{ review.releasedate|date:'F jS Y' }}</p>
+        <p>Rating: {{ review.rating }} stars</p>
+        <hr>
+
+        <!-- Preview Image -->
+        <img class="img-fluid rounded" src="{{ review.movie.url }}" alt="mov">
+
+        <hr>
+        
+    <div class="row justify-content-center mb-3">
+      
+        <div class="col-md-9 text-left">
+          <p class="lh-lg">{{ review.content|safe }} </p>
+        </div>
+      </div>
+
+
+
+
+{% endblock content %}

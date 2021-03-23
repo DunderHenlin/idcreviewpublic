@@ -1,0 +1,35 @@
+{% extends 'port/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="row justify-content-center my-3">
+  <div class="col-5">
+    <img src="{{ profile.dpimage.url }}" class="img-fluid">
+  </div>
+</div>
+
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h1 id="hometext" class="lh-sm fs-3">{{ profile.dpdescription }} </h1>
+  </div>
+</div>
+
+<h2 class="mt-5">Recent Reviews</h2>
+<hr>
+<div style="margin: 4px;" class="row">
+  {% for review in reviews %}
+  <div class="col-md-4">
+
+  
+    <a href="{% url 'review' %}">
+      <img src="{{ review.movie.url }}" class="thumbnail img-fluid mb-2">
+    </a>
+    
+    <h3 style="display: inline;">{{ review.title }}</h3>
+    <p style="float: right;margin-right: 6px;" >Rating : {{ review.rating }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}

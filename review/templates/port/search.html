@@ -1,0 +1,29 @@
+{% extends 'port/base.html' %}
+
+{% load static %}
+{% block content %}
+<h1 id="blogtitle" class="font-weight-bold text-center">Search</h1>
+
+{% if allReviews|length == 0 %}
+<p style="padding-bottom: 120px;">Your search - <b>{{ query }}</b> - did not match any documents.<br>
+
+    <ul><h6>Suggestions:</h6>
+    <li>Make sure that all words are spelled correctly.</li>
+    <li>Try different keywords.</li>
+    <li>Try more general keywords.</li></ul></p>
+{% endif %}
+
+{% for review in allReviews %}
+
+<div class="row justify-content-center my-3">
+  <div class="col-md-10">
+    
+      <a href="{% url 'detail' review.id %}"><h2><strong>{{ review.title }} | {{ review.rating }} stars</strong></h2></a>
+   
+    <h5 class="text-muted">{{ review.date|date:'M d Y'|upper }}</h5>
+    <h4>{{ review.description|striptags|truncatechars:100 }}</h4><hr>
+  </div>
+</div>
+
+{% endfor %}
+{% endblock content %}
